@@ -63,6 +63,16 @@ public class XRP_Ledger_Txns {
 	}
 	
 	
+	private XrplClient connectTestnetXRPLClientServer() {
+		
+		HttpUrl rippledTestnetURL = HttpUrl.get("");
+		
+		XrplClient xrplClient = new XrplClient(rippledTestnetURL);
+		
+		return xrplClient;
+		
+	}
+	
 	
 	// End Send XRP methods
 

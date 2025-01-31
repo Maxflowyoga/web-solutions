@@ -71,7 +71,8 @@ public class XRP_Ledger_Connect {
 			
 		} catch (Exception e) {
 			
-			System.out.println("System error in the XRP Ledger Test Account Connect...");
+			System.out.println("System error in the XRP Ledger Test Account RPC Connect, "
+					+ "Test Account Creation & Account funding...");
 				
 			
 		}

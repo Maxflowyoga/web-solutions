@@ -25,11 +25,19 @@ public class XRP_Ledger_Connect {
 	
 	protected Address createKeyPairTestWallet() {
 		
-		//Create a test KeyPair
-		KeyPair randomTestKeyPair = Seed.ed25519Seed().deriveKeyPair();
+		Address classicAddress = null;
+		try {
 		
-		//Get the Classic Address for your test wallet
-		Address classicAddress = randomTestKeyPair.publicKey().deriveAddress();
+			//Create a test KeyPair
+			KeyPair randomTestKeyPair = Seed.ed25519Seed().deriveKeyPair();
+			
+			//Get the Classic Address for your test wallet
+			classicAddress = randomTestKeyPair.publicKey().deriveAddress();
+			
+			
+		} catch (Exception e) {
+			System.out.println("Error in createKeyPairTestWallet: " + e);
+		}
 		
 		
 		return classicAddress;
@@ -38,11 +46,36 @@ public class XRP_Ledger_Connect {
 	
 	protected XrplClient connectTestnetXRPLClientServer() {
 		
-		HttpUrl rippledTestnetURL = HttpUrl.get("https://s.altnet.rippletest.net:51234/");
+		XrplClient xrplClient = null;
 		
-		XrplClient xrplClient = new XrplClient(rippledTestnetURL);
+		try {
+		
+			
+			HttpUrl rippledTestnetURL = HttpUrl.get("https://s.altnet.rippletest.net:51234/");
+			
+			xrplClient = new XrplClient(rippledTestnetURL);
+			
+			
+		} catch (Exception e) {
+			System.out.println("Error in connectTestnetXRPLClientServer: " + e);
+		}
+		
 		
 		return xrplClient;
+		
+	}
+	
+	protected void fundTestnetXRPAccount(Address classicAddress) {
+		
+		try {
+			
+			FaucetClient testnetFaucetClient = FaucetClient.construct(HttpUrl.get("https://faucet.altnet.rippletest.net"));
+			testnetFaucetClient.fundAccount(FundAccountRequest.of(classicAddress));
+			
+			
+		} catch (Exception e) {
+			System.out.println("Error in fundTestnetXRPAccount: " + e);
+		}
 		
 	}
 
@@ -70,8 +103,7 @@ public class XRP_Ledger_Connect {
 
 		    // Fund the account using the testnet Faucet
 		    
-		    FaucetClient faucetClient = FaucetClient.construct(HttpUrl.get("https://faucet.altnet.rippletest.net"));
-		    faucetClient.fundAccount(FundAccountRequest.of(classicAddress));
+		    fundTestnetXRPAccount(classicAddress);
 		    System.out.println("Funded the account using the Testnet faucet.");
 		    
 

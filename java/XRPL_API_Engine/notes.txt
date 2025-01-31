@@ -18,3 +18,28 @@ validated=false}
 
 
 -----------END---------
+
+
+
+AccountInfoResult{
+status=success, 
+accountData=AccountRootObject{
+	ledgerEntryType=ACCOUNT_ROOT, 
+		account=rL6ZQkzgvkfBvoB9J1AHgiLSm5tF4SuvnZ, 
+		balance=100000000, 
+		flags=0, 
+		ownerCount=0, 
+		previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, 
+		previousTransactionLedgerSequence=0, 
+		sequence=4449218, 
+		signerLists=[], 
+		index=D90C642B0D111B6AC555203879EB9AE0CA910108F54757F247E3E77BE855DC6D}, 
+ledgerCurrentIndex=4449218, 
+validated=false}
+
+
+
+
+
+
+-----------END---------

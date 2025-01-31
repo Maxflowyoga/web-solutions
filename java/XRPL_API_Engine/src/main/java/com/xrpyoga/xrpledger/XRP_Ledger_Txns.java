@@ -32,15 +32,9 @@ public class XRP_Ledger_Txns {
 		
 		try {
 			
-			
-			
-			
-			
+
 			
 		} catch (Exception e) {
-			
-			
-			
 			
 			
 		}
@@ -50,28 +44,6 @@ public class XRP_Ledger_Txns {
 		
 	}
 	
-	private Address createKeyPairTestWallet() {
-		
-		//Create a test KeyPair
-		KeyPair randomTestKeyPair = Seed.ed25519Seed().deriveKeyPair();
-		
-		//Get the Classic Address for your test wallet
-		Address classicAddress = randomTestKeyPair.publicKey().deriveAddress();
-		
-		
-		return classicAddress;
-	}
-	
-	
-	private XrplClient connectTestnetXRPLClientServer() {
-		
-		HttpUrl rippledTestnetURL = HttpUrl.get("");
-		
-		XrplClient xrplClient = new XrplClient(rippledTestnetURL);
-		
-		return xrplClient;
-		
-	}
 	
 	
 	// End Send XRP methods

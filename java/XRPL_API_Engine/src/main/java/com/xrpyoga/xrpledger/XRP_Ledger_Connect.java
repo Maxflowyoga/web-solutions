@@ -19,9 +19,35 @@ import org.xrpl.xrpl4j.model.transactions.XAddress;
 
 
 public class XRP_Ledger_Connect {
+	
+	
+	
+	
+	protected Address createKeyPairTestWallet() {
+		
+		//Create a test KeyPair
+		KeyPair randomTestKeyPair = Seed.ed25519Seed().deriveKeyPair();
+		
+		//Get the Classic Address for your test wallet
+		Address classicAddress = randomTestKeyPair.publicKey().deriveAddress();
+		
+		
+		return classicAddress;
+	}
+	
+	
+	protected XrplClient connectTestnetXRPLClientServer() {
+		
+		HttpUrl rippledTestnetURL = HttpUrl.get("https://s.altnet.rippletest.net:51234/");
+		
+		XrplClient xrplClient = new XrplClient(rippledTestnetURL);
+		
+		return xrplClient;
+		
+	}
 
 
-	public String getXRPAccountInfo() throws JsonRpcClientErrorException  {
+	public String getXRPTestnetAccountInfo() throws JsonRpcClientErrorException  {
 		
 		 System.out.println("Running the GetAccountInfo sample...");
 		 
@@ -31,18 +57,13 @@ public class XRP_Ledger_Connect {
 		try {
 			
 			 // Construct a network client
-		    HttpUrl rippledUrl = HttpUrl.get("https://s.altnet.rippletest.net:51234/");
-		    System.out.println("Constructing an XrplClient connected to " + rippledUrl);
-		    XrplClient xrplClient = new XrplClient(rippledUrl);
+		    XrplClient xrplClient = connectTestnetXRPLClientServer();
 
 		    // Create a random KeyPair
-		    KeyPair randomKeyPair = Seed.ed25519Seed().deriveKeyPair();
-		    System.out.println("Generated KeyPair: " + randomKeyPair);
-		    
-		    System.out.println("***" + randomKeyPair.privateKey().value());
-		    System.out.println("***" + randomKeyPair.privateKey().toString());
 		    // Derive the Classic and X-Addresses from testWallet
-		    Address classicAddress = randomKeyPair.publicKey().deriveAddress();
+		    Address classicAddress = createKeyPairTestWallet();
+		    
+		    
 		    XAddress xAddress = AddressCodec.getInstance().classicAddressToXAddress(classicAddress, true);
 		    System.out.println("Classic Address: " + classicAddress);
 		    System.out.println("X-Address: " + xAddress);

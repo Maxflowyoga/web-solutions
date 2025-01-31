@@ -1,4 +1,8 @@
-Sample Testnet account generation and funding Accound Data Object result:
+Sample Testnet account generation and funding Account Data Object result:
+
+
+@GetMapping("/xrp")
+
 
 AccountInfoResult{
 status=success, 
@@ -19,7 +23,7 @@ validated=false}
 
 -----------END---------
 
-
+@GetMapping("/xrp")
 
 AccountInfoResult{
 status=success, 

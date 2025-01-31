@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "DB_USER",
+    "type": "java.lang.String",
+    "description": "A description for 'DB_USER'"
+  },
+  {
+    "name": "DB_HOST",
+    "type": "java.lang.String",
+    "description": "A description for 'DB_HOST'"
+  },
+  {
+    "name": "DB_PSWD",
+    "type": "java.lang.String",
+    "description": "A description for 'DB_PSWD'"
+  }
+]}

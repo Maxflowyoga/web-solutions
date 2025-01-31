@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.xrpyoga.controllers")
+@ComponentScan(basePackages = "com.xrpyoga.xrplcontrollers, com.xrpyoga.controllers")
 public class XRPYogaApiEngineApplication {
 
 	public static void main(String[] args) {

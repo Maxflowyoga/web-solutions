@@ -50,7 +50,7 @@ public class Controller_XRPL_Home {
 			XRP_Ledger_Connect xrpConnect = new XRP_Ledger_Connect();
 			
 			
-			resultSet = xrpConnect.getXRPAccountInfo();
+			resultSet = xrpConnect.getXRPTestnetAccountInfo();
 			
 			//View_JSON_Export json = new View_JSON_Export();
 			

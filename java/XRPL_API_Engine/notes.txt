@@ -1,0 +1,20 @@
+Sample Testnet account generation and funding Accound Data Object result:
+
+AccountInfoResult{
+status=success, 
+accountData=AccountRootObject{
+	ledgerEntryType=ACCOUNT_ROOT,
+	account=r9JXrM9E8y6ckGcZmxsFdghB9JdVi55Ypq, 
+	balance=100000000, 
+	flags=0, 
+	ownerCount=0, 
+	previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, 
+	previousTransactionLedgerSequence=0, 
+	sequence=4448926, 
+	signerLists=[], 
+	index=8FAF0A1E19449170FD2FADD2E606B82FC93D079932B40F8A3900146BBCC31A52}, 
+ledgerCurrentIndex=4448926, 
+validated=false}
+
+
+-----------END---------

@@ -11,7 +11,12 @@ import org.xrpl.xrpl4j.client.faucet.FaucetClient;
 import org.xrpl.xrpl4j.client.faucet.FundAccountRequest;
 import org.xrpl.xrpl4j.codec.addresses.AddressCodec;
 import org.xrpl.xrpl4j.crypto.keys.KeyPair;
+import org.xrpl.xrpl4j.crypto.keys.PrivateKey;
 import org.xrpl.xrpl4j.crypto.keys.Seed;
+import org.xrpl.xrpl4j.crypto.signing.SignatureService;
+import org.xrpl.xrpl4j.crypto.signing.bc.BcSignatureService;
+
+import org.xrpl.xrpl4j.crypto.signing.SingleSignedTransaction;
 import org.xrpl.xrpl4j.model.client.accounts.AccountInfoRequestParams;
 import org.xrpl.xrpl4j.model.client.accounts.AccountInfoResult;
 import org.xrpl.xrpl4j.model.client.common.LedgerIndex;
@@ -134,8 +139,9 @@ public class XRP_Ledger_Txns {
 			
 			Payment payment = prepareTestnetXRPTransaction(testnetXrplClient, randomTestKeyPair, testnetClassicAddress);
 			
-			// Sign the Transaction
-			
+			// Construct the signature and Sign the Transaction
+			SignatureService<PrivateKey> signatureService = new BcSignatureService();
+			SingleSignedTransaction<Payment> signedPayment = signatureService.sign(randomTestKeyPair.privateKey(), payment);
 			
 			
 			// Submit the Signed Transaction Blob 

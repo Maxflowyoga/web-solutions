@@ -140,8 +140,9 @@ public class XRP_Ledger_Txns {
 	
 	
 	protected void validateSendPaymentXRP (XrplClient xrplClient, SingleSignedTransaction<Payment> signedPayment,
-			UnsignedInteger lastLedgerSequence) {
-		
+			
+			
+		UnsignedInteger lastLedgerSequence) {
 		
 		// check for validation
 		try {

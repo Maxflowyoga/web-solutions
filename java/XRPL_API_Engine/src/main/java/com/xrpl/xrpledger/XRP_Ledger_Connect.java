@@ -114,7 +114,8 @@ public class XRP_Ledger_Connect {
 
 		    // Create a random KeyPair
 		    // Derive the Classic and X-Addresses from testWallet
-		    Address classicAddress = createKeyPairTestWallet();
+		    KeyPair randomTestKeyPair = createKeyPairTest();
+		    Address classicAddress = getClassicAddress(randomTestKeyPair);
 		    
 		    
 		    XAddress xAddress = AddressCodec.getInstance().classicAddressToXAddress(classicAddress, true);

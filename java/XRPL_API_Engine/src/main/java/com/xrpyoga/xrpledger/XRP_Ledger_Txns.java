@@ -32,6 +32,30 @@ public class XRP_Ledger_Txns {
 		
 		try {
 			
+			XRP_Ledger_Connect testNet = new XRP_Ledger_Connect();
+			// Get Credentials Key Pair
+			Address testnetClassicAddress = testNet.createKeyPairTestWallet();
+			
+			
+			// Connect to a Testnet Client Server
+			
+			XrplClient testnetXrplClient = testNet.connectTestnetXRPLClientServer();
+			
+			
+			// Prepare the Transaction 
+			
+			
+			
+			// Sign the Transaction
+			
+			
+			
+			// Submit the Signed Transaction Blob 
+			
+			
+			
+			// Wait for Validation 
+			
 
 			
 		} catch (Exception e) {
@@ -45,7 +69,10 @@ public class XRP_Ledger_Txns {
 	}
 	
 	
-	
+	public void sendXRPMainnet(String incomingAddress, String destinationAddress) {
+		
+		
+	}
 	// End Send XRP methods
 
 }

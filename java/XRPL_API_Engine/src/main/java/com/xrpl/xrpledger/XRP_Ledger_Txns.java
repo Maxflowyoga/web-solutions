@@ -23,6 +23,10 @@ import org.xrpl.xrpl4j.model.client.common.LedgerIndex;
 import org.xrpl.xrpl4j.model.client.common.LedgerSpecifier;
 import org.xrpl.xrpl4j.model.client.fees.FeeResult;
 import org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams;
+import org.xrpl.xrpl4j.model.client.transactions.SubmitResult;
+import org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams;
+import org.xrpl.xrpl4j.model.client.transactions.TransactionResult;
+import org.xrpl.xrpl4j.model.immutables.FluentCompareTo;
 import org.xrpl.xrpl4j.model.ledger.AccountRootObject;
 import org.xrpl.xrpl4j.model.ledger.LedgerObject;
 import org.xrpl.xrpl4j.model.transactions.Address;
@@ -54,8 +58,39 @@ public class XRP_Ledger_Txns {
 		
 	}
 	
+	
+	protected LedgerIndex getLatestXRPLedgerSequence(XrplClient xrplClient) {
+		
+		LedgerIndex validatedLedger = null;
+		
+		
+		try {
+		
+			// Get the latest validated ledger index
+			validatedLedger = xrplClient.ledger(
+					LedgerRequestParams.builder()
+					.ledgerSpecifier(LedgerSpecifier.VALIDATED)
+					.build()
+					)
+				.ledgerIndex()
+				.orElseThrow(() -> new RuntimeException("LedgerIndex not available."));
+			
+			// LastLedgerSequence is the current ledger index + 4
+			//UnsignedInteger lastLedgerSequence = validatedLedger.plus(UnsignedInteger.valueOf(4)).unsignedIntegerValue();
+			
+			return validatedLedger;
+			
+		} catch (Exception e) {
+			
+			System.out.println("Error in getLatestXRPLedgerSequence");
+		}
+	
+		return validatedLedger;
+	}
+	
+	
 	protected Payment prepareTestnetXRPTransaction(XrplClient xrplClient, 
-			KeyPair randomTestKeyPair,  Address classicAdress) throws JsonRpcClientErrorException  {
+			KeyPair randomTestKeyPair,  Address classicAdress, UnsignedInteger lastLedgerSequence) throws JsonRpcClientErrorException  {
 		
 		Payment payment = null;
 		
@@ -76,18 +111,6 @@ public class XRP_Ledger_Txns {
 			// Request current fee information from rippled
 			XrpCurrencyAmount openLedgerFee = getFeeResult(xrplClient);
 			
-			
-			// Get the latest validated ledger index
-			LedgerIndex validatedLedger = xrplClient.ledger(
-					LedgerRequestParams.builder()
-					.ledgerSpecifier(LedgerSpecifier.VALIDATED)
-					.build()
-					)
-				.ledgerIndex()
-				.orElseThrow(() -> new RuntimeException("LedgerIndex not available."));
-			
-			// LastLedgerSequence is the current ledger index + 4
-			UnsignedInteger lastLedgerSequence = validatedLedger.plus(UnsignedInteger.valueOf(4)).unsignedIntegerValue();
 			
 			
 			// Finish the constructed Payment object
@@ -115,6 +138,67 @@ public class XRP_Ledger_Txns {
 	}
 	
 	
+	
+	protected void validateSendPaymentXRP (XrplClient xrplClient, SingleSignedTransaction<Payment> signedPayment,
+			UnsignedInteger lastLedgerSequence) {
+		
+		
+		// check for validation
+		try {
+			
+			TransactionResult<Payment> transactionResult = null;
+			boolean transactionValidated = false;
+			boolean transactionExpired = false;
+			
+			while (!transactionValidated && !transactionExpired) {
+				
+				Thread.sleep(4*1000);
+				
+				LedgerIndex latestValidatedLedgerIndex = xrplClient.ledger(
+						LedgerRequestParams.builder()
+						.ledgerSpecifier(LedgerSpecifier.VALIDATED)
+						.build()						
+						)
+						.ledgerIndex()
+						.orElseThrow(() -> new RuntimeException("Ledger response did not contain a LedgerIndex..."));
+				
+				transactionResult = xrplClient.transaction(TransactionRequestParams.of(signedPayment.hash()), Payment.class);
+				
+				if (transactionResult.validated()) {
+					System.out.println("Payment was validated with result code ");
+					
+					transactionValidated = true;
+					
+				} else {
+
+					
+					boolean lastLedgerSequenceHasPassed = FluentCompareTo.is(latestValidatedLedgerIndex.unsignedIntegerValue())
+							.greaterThan(UnsignedInteger.valueOf(lastLedgerSequence.intValue()));
+					
+					
+					if (lastLedgerSequenceHasPassed) {
+						
+						
+					} else {
+						
+						
+					}
+						
+						
+				}
+						
+			}
+			
+		} catch (Exception e) {
+			
+			System.out.println("Error in validateSendPaymentXRP");
+		}
+		
+	
+		
+		
+	}
+	
 	// Send XRP methods
 	
 	
@@ -136,19 +220,26 @@ public class XRP_Ledger_Txns {
 			
 			
 			// Prepare the Transaction 
+			// Get the latest validated ledger index
+			LedgerIndex validatedLedger = getLatestXRPLedgerSequence(testnetXrplClient);
 			
-			Payment payment = prepareTestnetXRPTransaction(testnetXrplClient, randomTestKeyPair, testnetClassicAddress);
+			UnsignedInteger lastLedgerSequence = validatedLedger.plus(UnsignedInteger.valueOf(4)).unsignedIntegerValue();
+			
+			Payment payment = prepareTestnetXRPTransaction(testnetXrplClient, randomTestKeyPair, testnetClassicAddress, lastLedgerSequence);
 			
 			// Construct the signature and Sign the Transaction
 			SignatureService<PrivateKey> signatureService = new BcSignatureService();
 			SingleSignedTransaction<Payment> signedPayment = signatureService.sign(randomTestKeyPair.privateKey(), payment);
 			
+
 			
 			// Submit the Signed Transaction Blob 
+			SubmitResult<Payment> paymentSubmitResult = testnetXrplClient.submit(signedPayment);
+			System.out.println("Payment Submitted Results is: " + paymentSubmitResult);
 			
 			
-			
-			// Wait for Validation 
+			// Process and await for Validation 
+			validateSendPaymentXRP(testnetXrplClient, signedPayment, lastLedgerSequence);
 			
 
 			

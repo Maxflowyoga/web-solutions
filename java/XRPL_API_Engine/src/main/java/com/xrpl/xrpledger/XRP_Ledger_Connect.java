@@ -21,16 +21,35 @@ import org.xrpl.xrpl4j.model.transactions.XAddress;
 public class XRP_Ledger_Connect {
 	
 	
-	
-	
-	protected Address createKeyPairTestWallet() {
+	protected KeyPair createKeyPairTest() {
 		
-		Address classicAddress = null;
+		//Address classicAddress = null;
 		try {
 		
 			//Create a test KeyPair
 			KeyPair randomTestKeyPair = Seed.ed25519Seed().deriveKeyPair();
 			
+			//Get the Classic Address for your test wallet
+			//classicAddress = randomTestKeyPair.publicKey().deriveAddress();
+			return randomTestKeyPair;
+			
+		} catch (Exception e) {
+			System.out.println("Error in createKeyPairTest: " + e);
+		}
+		
+		
+		return null;
+	}
+	
+	
+	protected Address getClassicAddress(KeyPair randomTestKeyPair) {
+		
+		Address classicAddress = null;
+		try {
+		
+			//Create a test KeyPair
+		//	KeyPair randomTestKeyPair = Seed.ed25519Seed().deriveKeyPair();
+		//	KeyPair randomTestKeyPair = createKeyPairTest();
 			//Get the Classic Address for your test wallet
 			classicAddress = randomTestKeyPair.publicKey().deriveAddress();
 			
@@ -78,6 +97,7 @@ public class XRP_Ledger_Connect {
 		}
 		
 	}
+	
 
 
 	public String getXRPTestnetAccountInfo() throws JsonRpcClientErrorException  {

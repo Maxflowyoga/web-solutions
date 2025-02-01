@@ -139,15 +139,15 @@ public class XRP_Ledger_Txns {
 	
 	
 	
-	protected void validateSendPaymentXRP (XrplClient xrplClient, SingleSignedTransaction<Payment> signedPayment,
-			
-			
+	protected TransactionResult<Payment> validateSendPaymentXRP (XrplClient xrplClient, SingleSignedTransaction<Payment> signedPayment,
 		UnsignedInteger lastLedgerSequence) {
+	
 		
+		TransactionResult<Payment> transactionResult = null;
+	
 		// check for validation
 		try {
 			
-			TransactionResult<Payment> transactionResult = null;
 			boolean transactionValidated = false;
 			boolean transactionExpired = false;
 			
@@ -189,23 +189,21 @@ public class XRP_Ledger_Txns {
 				}
 						
 			}
+			return transactionResult;
 			
 		} catch (Exception e) {
 			
 			System.out.println("Error in validateSendPaymentXRP");
 		}
 		
-	
-		
+		return transactionResult;
 		
 	}
 	
 	// Send XRP methods
 	
 	
-	public Object sendTestnetXRP() throws JsonRpcClientErrorException  {
-		
-		Object returnResult = new Object();
+	public void sendTestnetXRP() throws JsonRpcClientErrorException  {
 		
 		try {
 			
@@ -216,7 +214,6 @@ public class XRP_Ledger_Txns {
 			
 			
 			// Connect to a Testnet Client Server
-			
 			XrplClient testnetXrplClient = testNet.connectTestnetXRPLClientServer();
 			
 			
@@ -240,17 +237,25 @@ public class XRP_Ledger_Txns {
 			
 			
 			// Process and await for Validation 
-			validateSendPaymentXRP(testnetXrplClient, signedPayment, lastLedgerSequence);
+			TransactionResult<Payment> transactionResult = validateSendPaymentXRP(testnetXrplClient, signedPayment, lastLedgerSequence);
 			
-
+			
+			// Check the Transaction Status
+			System.out.println(transactionResult);
+			System.out.println("Explorer link is: https://testnet.xrpl.org/transactions/" + signedPayment);
+			
+			transactionResult.metadata().ifPresent(metadata -> {
+				System.out.println("Result code: " + metadata.transactionResult());
+				metadata.deliveredAmount().ifPresent(deliveredAmount ->
+				System.out.println("XRP Delivered: " + ((XrpCurrencyAmount) deliveredAmount).toXrp()));
+			});
+			
 			
 		} catch (Exception e) {
 			
+			System.out.println("System error in sendTestnetXRP...");
 			
 		}
-		
-		
-		return returnResult;
 		
 	}
 	

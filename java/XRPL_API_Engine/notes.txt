@@ -50,5 +50,10 @@ validated=false}
 AccountInfoResult{status=success, accountData=AccountRootObject{ledgerEntryType=ACCOUNT_ROOT, account=rfmSzqxLj6Ao6LXp6DBT279ks77WxPZ3rm, balance=100000000, flags=0, ownerCount=0, previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, previousTransactionLedgerSequence=0, sequence=4450727, signerLists=[], index=C51C728405406C24DFD6BAE11876A8A6A26E5401F8CEC580CB9B87ABCF83FF7E}, ledgerCurrentIndex=4450727, validated=false}
 
 
+----
+
+@GetMapping("/xrp")
+
+AccountInfoResult{status=success, accountData=AccountRootObject{ledgerEntryType=ACCOUNT_ROOT, account=rJ6tZhAfyppXT7V11t5zFJyj6XvMrEupQp, balance=100000000, flags=0, ownerCount=0, previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, previousTransactionLedgerSequence=0, sequence=4450991, signerLists=[], index=976C768A9BEECCF8AB6362C987772A0150BD3108FD20EB146B8CCEC071B28FB6}, ledgerCurrentIndex=4450991, validated=false}
 
 -----------END---------

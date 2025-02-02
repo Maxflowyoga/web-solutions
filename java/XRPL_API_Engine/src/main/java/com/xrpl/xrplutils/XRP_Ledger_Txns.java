@@ -44,9 +44,9 @@ public class XRP_Ledger_Txns {
 	
 	// Send XRP methods
 	
-	public String sendTestnetXRP() throws JsonRpcClientErrorException  {
+	public TransactionResult<Payment> sendTestnetXRP() throws JsonRpcClientErrorException  {
 		
-		try {
+	//	try {
 			
 			XRP_Ledger_Connect testNet = new XRP_Ledger_Connect();
 			Model_XRP_Transaction xrpTxn = new Model_XRP_Transaction();
@@ -54,24 +54,19 @@ public class XRP_Ledger_Txns {
 			// Connect to a Testnet Client Server
 			XrplClient testnetXrplClient = testNet.connectTestnetXRPLClientServer();
 			
-			
 			// Get Credentials Key Pair
 			KeyPair randomTestKeyPair = testNet.createKeyPairTest();
 			System.out.println("Random Test Key Pair is: " + randomTestKeyPair.toString());
 			
-			
 			Address testnetClassicAddress = testNet.getClassicAddress(randomTestKeyPair);
 			System.out.println("Classic address is: " + testnetClassicAddress);
-			
 			
 			testNet.fundTestnetXRPAccount(testnetClassicAddress);
 		    System.out.println("Funded the account using the Testnet faucet.");
 		    
-			
 			// Prepare the Transaction 
 			// Get the latest validated ledger index
 			//LedgerIndex validatedLedger = getLatestXRPLedgerSequence(testnetXrplClient);
-			
 
 			// Get the latest validated ledger index
 			LedgerIndex validatedLedger = testnetXrplClient.ledger(
@@ -84,7 +79,6 @@ public class XRP_Ledger_Txns {
 			
 			System.out.println("Validated Ledger is: " + validatedLedger);
 			System.out.println("Send Testnet XRP to validated ledger #: " + validatedLedger);
-			
 			
 			UnsignedInteger lastLedgerSequence = validatedLedger.plus(UnsignedInteger.valueOf(4)).unsignedIntegerValue();
 			
@@ -130,17 +124,16 @@ public class XRP_Ledger_Txns {
 				
 			});
 			
-			if(transactionResult.metadata().isPresent()) {
+		//	if(transactionResult.metadata().isPresent()) {
 				
-				return transactionResult.metadata().toString();
+				return transactionResult;
 				
-			} 
+	//		} 
+	/*
 			else {
 				
 				return transactionResult.toString();
 			}
-			
-			
 			
 		} catch (Exception e) {
 			
@@ -149,7 +142,7 @@ public class XRP_Ledger_Txns {
 		}
 		
 		return "No Data sendTestnetXRP...";
-		
+		*/
 	}
 	
 	

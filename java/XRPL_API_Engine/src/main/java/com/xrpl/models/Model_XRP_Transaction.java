@@ -15,10 +15,13 @@ import org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams;
 import org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams;
 import org.xrpl.xrpl4j.model.client.transactions.TransactionResult;
 import org.xrpl.xrpl4j.model.immutables.FluentCompareTo;
+import org.xrpl.xrpl4j.model.jackson.ObjectMapperFactory;
 import org.xrpl.xrpl4j.model.transactions.Address;
 import org.xrpl.xrpl4j.model.transactions.Payment;
 import org.xrpl.xrpl4j.model.transactions.XrpCurrencyAmount;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.primitives.UnsignedInteger;
 
 public class Model_XRP_Transaction {
@@ -211,7 +214,23 @@ public class Model_XRP_Transaction {
 	}
 	
 	
+	public String exportJSON(Object incomingTxnBuilder) {
+		
+		String json = "";
+		ObjectMapper objectmapper = ObjectMapperFactory.create();
 	
+		try {
+			json = objectmapper.writerWithDefaultPrettyPrinter().writeValueAsString(incomingTxnBuilder);
+		} catch (JsonProcessingException e) {
+			
+			System.out.println("Erorr in exportJSON object mapper: " + e);
+			
+		}
+		
+		return json;
+		
+		
+	}
 
 }
 

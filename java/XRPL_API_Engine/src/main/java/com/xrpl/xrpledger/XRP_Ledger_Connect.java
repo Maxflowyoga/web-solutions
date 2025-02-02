@@ -100,7 +100,7 @@ public class XRP_Ledger_Connect {
 	
 
 
-	public String getXRPTestnetAccountInfo() throws JsonRpcClientErrorException  {
+	public String getXRPTestnetAccountInfo()  {
 		
 		 System.out.println("Running the GetAccountInfo sample...");
 		 

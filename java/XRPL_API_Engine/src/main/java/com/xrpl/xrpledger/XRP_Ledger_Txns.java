@@ -189,9 +189,12 @@ public class XRP_Ledger_Txns {
 					
 					if (lastLedgerSequenceHasPassed) {
 						
+						System.out.println("LastLedgerSequence has passed. Last tx response: " + transactionResult);
+						transactionExpired = true;
 						
 					} else {
 						
+						System.out.println("Payment not yet validated...");
 						
 					}
 						
@@ -315,6 +318,7 @@ public class XRP_Ledger_Txns {
 			try {
 				paymentSubmitResult = testnetXrplClient.submit(signedPayment);
 				System.out.println("Payment Submitted Results is: " + paymentSubmitResult);
+				
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -345,9 +349,10 @@ public class XRP_Ledger_Txns {
 				
 				return transactionResult.metadata().toString();
 				
-			} else {
+			} 
+			else {
 				
-				return "No Transaction result metadata: ";
+				return transactionResult.toString();
 			}
 			
 			/*

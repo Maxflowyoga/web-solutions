@@ -20,7 +20,7 @@ public class Controller_XRPL_SendXRP {
 		
 		try {
 			XRP_Ledger_Txns testnetTransaction = new XRP_Ledger_Txns();
-			testnetTransaction.sendTestnetXRP();
+			result = testnetTransaction.sendTestnetXRP();
 			
 			return result;
 			

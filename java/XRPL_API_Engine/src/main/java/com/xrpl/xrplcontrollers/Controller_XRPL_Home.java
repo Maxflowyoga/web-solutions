@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.xrpl.db.DB_MYSQL_Utils;
 import com.xrpl.models.Model_Greeting;
-import com.xrpl.xrpledger.XRP_Ledger_Connect;
+import com.xrpl.xrplutils.XRP_Ledger_Connect;
 
 
 @RestController

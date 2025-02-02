@@ -1,4 +1,4 @@
-package com.xrpl.xrpledger;
+package com.xrpl.xrplutils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

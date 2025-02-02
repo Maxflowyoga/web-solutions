@@ -1,4 +1,4 @@
-package com.xrpl.xrpledger;
+package com.xrpl.xrplutils;
 
 import java.math.BigDecimal;
 
@@ -16,6 +16,7 @@ import org.xrpl.xrpl4j.crypto.keys.Seed;
 import org.xrpl.xrpl4j.crypto.signing.SignatureService;
 import org.xrpl.xrpl4j.crypto.signing.bc.BcSignatureService;
 
+import com.xrpl.models.Model_XRP_Transaction;
 import org.xrpl.xrpl4j.crypto.signing.SingleSignedTransaction;
 import org.xrpl.xrpl4j.model.client.accounts.AccountInfoRequestParams;
 import org.xrpl.xrpl4j.model.client.accounts.AccountInfoResult;
@@ -41,191 +42,14 @@ public class XRP_Ledger_Txns {
 	
 	
 	
-	protected XrpCurrencyAmount getFeeResult( XrplClient xrplClient) {
-		
-		try {
-			
-			FeeResult feeResult = xrplClient.fee();
-			XrpCurrencyAmount openLedgerFee = feeResult.drops().openLedgerFee();
-			
-			return openLedgerFee;
-			
-		} catch (Exception e) {
-			
-			System.out.println("System error in getFeeResult...");
-		}
-		
-		return null;
-		
-	}
-	
-	
-	protected LedgerIndex getLatestXRPLedgerSequence(XrplClient xrplClient) throws JsonRpcClientErrorException {
-		
-		//LedgerIndex validatedLedger = null;
-		System.out.println("in getLatestXRPLedgerSequence()...");
-		
-	//	try {
-		
-		// Get the latest validated ledger index
-		LedgerIndex validatedLedger = xrplClient.ledger(
-					LedgerRequestParams.builder()
-					.ledgerSpecifier(LedgerSpecifier.VALIDATED)
-					.build()
-					)
-				.ledgerIndex()
-				.orElseThrow(() -> new RuntimeException("LedgerIndex not available."));
-		
-		System.out.println("Validated Ledger is: " + validatedLedger);
-			// LastLedgerSequence is the current ledger index + 4
-			//UnsignedInteger lastLedgerSequence = validatedLedger.plus(UnsignedInteger.valueOf(4)).unsignedIntegerValue();
-			
-			return validatedLedger;
-	/*		
-		} catch (Exception e) {
-			
-			System.out.println("Error in getLatestXRPLedgerSequence");
-		}
-	
-		return validatedLedger;
-		*/
-	}
-	
-	
-	protected Payment prepareTestnetXRPTransaction(XrplClient xrplClient, 
-			KeyPair randomTestKeyPair,  Address classicAdress, 
-			UnsignedInteger lastLedgerSequence) throws JsonRpcClientErrorException  {
-		
-		
-		System.out.println("In the prepare Testnet XRP Transaction...");
-	//	Payment payment = null;
-		
-	//	try {
-			/*
-			AccountInfoRequestParams requestParams = AccountInfoRequestParams.builder()
-					.account(classicAdress)
-					.ledgerSpecifier(LedgerSpecifier.VALIDATED)
-					.build();
-			*/
-			AccountInfoRequestParams requestParams = AccountInfoRequestParams.of(classicAdress);
-		    
-			System.out.println("Account Info Request Params are: " + requestParams);
-			//get public key from classicAddress was derived from to pass into the payment object
-			
-			
-			AccountInfoResult accountInfoResult = xrplClient.accountInfo(requestParams);
-
-			System.out.println("Account Info Result is: " + accountInfoResult.toString());
-			
-			UnsignedInteger sequence = accountInfoResult.accountData().sequence();
-			System.out.println("Sequence is: " + sequence);
-			
-			
-			// Request current fee information from rippled
-			XrpCurrencyAmount openLedgerFee = getFeeResult(xrplClient);
-			System.out.println("Open ledger fee is: " + openLedgerFee);
-			
-			// Finish the constructed Payment object
-			
-			Payment payment = Payment.builder()
-					.account(classicAdress)
-					.amount(XrpCurrencyAmount.ofXrp(BigDecimal.ONE))
-					.destination(classicAdress)
-					.sequence(sequence)
-					.fee(openLedgerFee)
-					.signingPublicKey(randomTestKeyPair.publicKey())
-					.lastLedgerSequence(lastLedgerSequence)
-					.build();
-			
-			System.out.println("Constructed Payment: " + payment);
-			
-			return payment;
-		/*
-			
-		} catch (Exception e) {
-			
-			System.out.println("Error in prepareTestnetXRPTransaction...");
-		}
-		
-		return payment;
-		*/
-	}
-	
-	
-	
-	protected TransactionResult<Payment> validateSendPaymentXRP (XrplClient xrplClient, SingleSignedTransaction<Payment> signedPayment,
-		UnsignedInteger lastLedgerSequence) {
-	
-		
-		TransactionResult<Payment> transactionResult = null;
-	
-		// check for validation
-		try {
-			
-			boolean transactionValidated = false;
-			boolean transactionExpired = false;
-			
-			while (!transactionValidated && !transactionExpired) {
-				
-				Thread.sleep(4*1000);
-				
-				LedgerIndex latestValidatedLedgerIndex = xrplClient.ledger(
-						LedgerRequestParams.builder()
-						.ledgerSpecifier(LedgerSpecifier.VALIDATED)
-						.build()						
-						)
-						.ledgerIndex()
-						.orElseThrow(() -> new RuntimeException("Ledger response did not contain a LedgerIndex..."));
-				
-				transactionResult = xrplClient.transaction(TransactionRequestParams.of(signedPayment.hash()), Payment.class);
-				
-				if (transactionResult.validated()) {
-					System.out.println("Payment was validated with result code ");
-					
-					transactionValidated = true;
-					
-				} else {
-
-					
-					boolean lastLedgerSequenceHasPassed = FluentCompareTo.is(latestValidatedLedgerIndex.unsignedIntegerValue())
-							.greaterThan(UnsignedInteger.valueOf(lastLedgerSequence.intValue()));
-					
-					
-					if (lastLedgerSequenceHasPassed) {
-						
-						System.out.println("LastLedgerSequence has passed. Last tx response: " + transactionResult);
-						transactionExpired = true;
-						
-					} else {
-						
-						System.out.println("Payment not yet validated...");
-						
-					}
-						
-						
-				}
-						
-			}
-			return transactionResult;
-			
-		} catch (Exception e) {
-			
-			System.out.println("Error in validateSendPaymentXRP");
-		}
-		
-		return transactionResult;
-		
-	}
-	
 	// Send XRP methods
-	
 	
 	public String sendTestnetXRP() throws JsonRpcClientErrorException  {
 		
 		try {
 			
 			XRP_Ledger_Connect testNet = new XRP_Ledger_Connect();
-			
+			Model_XRP_Transaction xrpTxn = new Model_XRP_Transaction();
 
 			// Connect to a Testnet Client Server
 			XrplClient testnetXrplClient = testNet.connectTestnetXRPLClientServer();
@@ -266,9 +90,7 @@ public class XRP_Ledger_Txns {
 			
 			System.out.println("***Last Ledger Sequence: " + lastLedgerSequence);
 			
-			Payment payment = prepareTestnetXRPTransaction(testnetXrplClient, randomTestKeyPair, testnetClassicAddress, lastLedgerSequence);
-			
-			System.out.println("Constructed Payment: " + payment);
+			Payment payment = xrpTxn.prepareTestnetXRPTransaction(testnetXrplClient, randomTestKeyPair, testnetClassicAddress, lastLedgerSequence);
 			
 			// Construct the signature and Sign the Transaction
 			SignatureService<PrivateKey> signatureService = new BcSignatureService();
@@ -293,7 +115,7 @@ public class XRP_Ledger_Txns {
 			}
 			
 			// Process and await for Validation 
-			TransactionResult<Payment> transactionResult = validateSendPaymentXRP(testnetXrplClient, signedPayment, lastLedgerSequence);
+			TransactionResult<Payment> transactionResult = xrpTxn.validateSendPaymentXRP(testnetXrplClient, signedPayment, lastLedgerSequence);
 			
 			// Check the Transaction Status
 			System.out.println(transactionResult);

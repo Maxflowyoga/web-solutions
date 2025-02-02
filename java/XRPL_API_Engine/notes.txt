@@ -56,4 +56,37 @@ AccountInfoResult{status=success, accountData=AccountRootObject{ledgerEntryType=
 
 AccountInfoResult{status=success, accountData=AccountRootObject{ledgerEntryType=ACCOUNT_ROOT, account=rJ6tZhAfyppXT7V11t5zFJyj6XvMrEupQp, balance=100000000, flags=0, ownerCount=0, previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, previousTransactionLedgerSequence=0, sequence=4450991, signerLists=[], index=976C768A9BEECCF8AB6362C987772A0150BD3108FD20EB146B8CCEC071B28FB6}, ledgerCurrentIndex=4450991, validated=false}
 
+
+
+------
+
+Random Test Key Pair is: KeyPair{privateKey=PrivateKey{value=[redacted], destroyed=false}, publicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)}, base58Value=aKGJXMyCtcEDUtKoxHPhbSapncGJpygx3yTMqqGaLagNbaUhCy6m, base16Value=EDCA4700F2B3FE09BE4C7DC3419740B08FC27E2388BF0825E7C0404EA381B10382, keyType=ED25519}}
+Classic address is: rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4
+Funded the account using the Testnet faucet.
+Validated Ledger is: 4486232
+Send Testnet XRP to validated ledger #: 4486232
+***Last Ledger Sequence: 4486236
+Request Params are: AccountInfoRequestParams{account=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, ledgerSpecifier=LedgerSpecifier{ledgerIndexShortcut=current}, strict=true, queue=false, signerLists=true}
+Account Info Result is: AccountInfoResult{status=success, accountData=AccountRootObject{ledgerEntryType=ACCOUNT_ROOT, account=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, balance=100000000, flags=0, ownerCount=0, previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, previousTransactionLedgerSequence=0, sequence=4486234, signerLists=[], index=6D43862D7D295EFCE1C52D12CD5B7529B6942EDF4B34EE8F7FDE4C3D6E5A5983}, ledgerCurrentIndex=4486234, validated=false}
+Sequence is: 4486234
+Open ledger fee is: 10
+Constructed Payment: Payment{account=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, fee=10, sequence=4486234, lastLedgerSequence=4486236, memos=[], signers=[], signingPublicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)}, base58Value=aKGJXMyCtcEDUtKoxHPhbSapncGJpygx3yTMqqGaLagNbaUhCy6m, base16Value=EDCA4700F2B3FE09BE4C7DC3419740B08FC27E2388BF0825E7C0404EA381B10382, keyType=ED25519}, flags=0, amount=1000000, destination=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, paths=[]}
+Signature Service: org.xrpl.xrpl4j.crypto.signing.bc.BcSignatureService@62ad4648
+Signed payment object is: SingleSignedTransaction{unsignedTransaction=Payment{account=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, fee=10, sequence=4486234, lastLedgerSequence=4486236, memos=[], signers=[], signingPublicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)}, base58Value=aKGJXMyCtcEDUtKoxHPhbSapncGJpygx3yTMqqGaLagNbaUhCy6m, base16Value=EDCA4700F2B3FE09BE4C7DC3419740B08FC27E2388BF0825E7C0404EA381B10382, keyType=ED25519}, flags=0, amount=1000000, destination=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, paths=[]}, signedTransaction=Payment{account=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, fee=10, sequence=4486234, lastLedgerSequence=4486236, memos=[], signers=[], signingPublicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)}, base58Value=aKGJXMyCtcEDUtKoxHPhbSapncGJpygx3yTMqqGaLagNbaUhCy6m, base16Value=EDCA4700F2B3FE09BE4C7DC3419740B08FC27E2388BF0825E7C0404EA381B10382, keyType=ED25519}, transactionSignature=Signature{value=UnsignedByteArray{unsignedBytes=List(size=64)}}, flags=0, amount=1000000, destination=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, paths=[]}, signedTransactionBytes=UnsignedByteArray{unsignedBytes=List(size=177)}, hash=1140A642525FF5AAFAE949115E0EA2C5F92D38BAE3750A635E7F0021E9A9EE83, signature=Signature{value=UnsignedByteArray{unsignedBytes=List(size=64)}}}
+Payment Submitted Results is: SubmitResult{
+status=success, engineResult=temREDUNDANT, 
+engineResultMessage=The transaction is redundant., 
+transactionBlob=120000240044745A201B0044745C6140000000000F424068400000000000000A7321EDCA4700F2B3FE09BE4C7DC3419740B08FC27E2388BF0825E7C0404EA381B103827440952863D7BCD8DE15DAB889E2309ED018440512EE66E49446B25AE051AAB8A5F14F7303607A1F41E94CECB535360CD17B6F6FCF7A9F8F47C4F8826B88C75E9E01811497AB230403505ABF72E8799383F2E96DB1AD1AC1831497AB230403505ABF72E8799383F2E96DB1AD1AC1, 
+transactionResult=TransactionResult{transaction=Payment{account=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, 
+fee=10, sequence=4486234, lastLedgerSequence=4486236, memos=[], 
+signers=[], signingPublicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)},
+ base58Value=aKGJXMyCtcEDUtKoxHPhbSapncGJpygx3yTMqqGaLagNbaUhCy6m,
+  base16Value=EDCA4700F2B3FE09BE4C7DC3419740B08FC27E2388BF0825E7C0404EA381B10382,
+   keyType=ED25519}, transactionSignature=Signature{value=UnsignedByteArray{unsignedBytes=List(size=64)}}, 
+   flags=0, amount=1000000, destination=rNFxskzrXFswdmHsRXsohvjyKpoo991Ab4, 
+   paths=[]}, hash=1140A642525FF5AAFAE949115E0EA2C5F92D38BAE3750A635E7F0021E9A9EE83, 
+   validated=false}, accepted=true, accountSequenceAvailable=4486234, 
+   accountSequenceNext=4486234, applied=false, broadcast=false, kept=true, 
+   queued=false, openLedgerCost=10, validatedLedgerIndex=4486233}
+
 -----------END---------

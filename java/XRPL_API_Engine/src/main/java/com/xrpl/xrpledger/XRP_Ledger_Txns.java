@@ -101,13 +101,17 @@ public class XRP_Ledger_Txns {
 	//	Payment payment = null;
 		
 	//	try {
-			
+			/*
 			AccountInfoRequestParams requestParams = AccountInfoRequestParams.builder()
 					.account(classicAdress)
 					.ledgerSpecifier(LedgerSpecifier.VALIDATED)
 					.build();
+			*/
+			AccountInfoRequestParams requestParams = AccountInfoRequestParams.of(classicAdress);
+		    
 			System.out.println("Account Info Request Params are: " + requestParams);
 			//get public key from classicAddress was derived from to pass into the payment object
+			
 			
 			AccountInfoResult accountInfoResult = xrplClient.accountInfo(requestParams);
 
@@ -218,7 +222,7 @@ public class XRP_Ledger_Txns {
 	
 	public String sendTestnetXRP() throws JsonRpcClientErrorException  {
 		
-	//	try {
+		try {
 			
 			XRP_Ledger_Connect testNet = new XRP_Ledger_Connect();
 			
@@ -262,47 +266,9 @@ public class XRP_Ledger_Txns {
 			
 			System.out.println("***Last Ledger Sequence: " + lastLedgerSequence);
 			
-			//Payment payment = prepareTestnetXRPTransaction(testnetXrplClient, randomTestKeyPair, testnetClassicAddress, lastLedgerSequence);
-			/*
-			AccountInfoRequestParams requestParams = AccountInfoRequestParams.builder()
-					.account(testnetClassicAddress)
-					.ledgerSpecifier(LedgerSpecifier.VALIDATED)
-					.build();
-			*/
-			AccountInfoRequestParams requestParams = AccountInfoRequestParams.of(testnetClassicAddress);
-		    
-			
-			System.out.println("Request Params are: " + requestParams);
-			//get public key from classicAddress was derived from to pass into the payment object
-			
-			AccountInfoResult accountInfoResult = testnetXrplClient.accountInfo(requestParams);
-
-			System.out.println("Account Info Result is: " + accountInfoResult.toString());
-			
-			UnsignedInteger sequence = accountInfoResult.accountData().sequence();
-			System.out.println("Sequence is: " + sequence);
-			
-			
-			// Request current fee information from rippled
-			XrpCurrencyAmount openLedgerFee = getFeeResult(testnetXrplClient);
-			System.out.println("Open ledger fee is: " + openLedgerFee);
-			
-			// Finish the constructed Payment object
-			
-			Payment payment = Payment.builder()
-					.account(testnetClassicAddress)
-					.amount(XrpCurrencyAmount.ofXrp(BigDecimal.ONE))
-					.destination(testnetClassicAddress)
-					.sequence(sequence)
-					.fee(openLedgerFee)
-					.signingPublicKey(randomTestKeyPair.publicKey())
-					.lastLedgerSequence(lastLedgerSequence)
-					.build();
+			Payment payment = prepareTestnetXRPTransaction(testnetXrplClient, randomTestKeyPair, testnetClassicAddress, lastLedgerSequence);
 			
 			System.out.println("Constructed Payment: " + payment);
-			
-			
-			
 			
 			// Construct the signature and Sign the Transaction
 			SignatureService<PrivateKey> signatureService = new BcSignatureService();
@@ -312,7 +278,6 @@ public class XRP_Ledger_Txns {
 			SingleSignedTransaction<Payment> signedPayment = signatureService.sign(randomTestKeyPair.privateKey(), payment);
 			System.out.println("Signed payment object is: " + signedPayment);
 
-			
 			// Submit the Signed Transaction Blob 
 			SubmitResult<Payment> paymentSubmitResult;
 			try {
@@ -327,10 +292,8 @@ public class XRP_Ledger_Txns {
 				e.printStackTrace();
 			}
 			
-			
 			// Process and await for Validation 
 			TransactionResult<Payment> transactionResult = validateSendPaymentXRP(testnetXrplClient, signedPayment, lastLedgerSequence);
-			
 			
 			// Check the Transaction Status
 			System.out.println(transactionResult);
@@ -355,7 +318,7 @@ public class XRP_Ledger_Txns {
 				return transactionResult.toString();
 			}
 			
-			/*
+			
 			
 		} catch (Exception e) {
 			
@@ -363,8 +326,8 @@ public class XRP_Ledger_Txns {
 			
 		}
 		
-		return "No Data";
-		*/
+		return "No Data sendTestnetXRP...";
+		
 	}
 	
 	

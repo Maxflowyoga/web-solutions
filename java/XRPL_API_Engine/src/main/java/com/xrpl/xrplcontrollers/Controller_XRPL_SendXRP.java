@@ -22,7 +22,7 @@ public class Controller_XRPL_SendXRP {
 			XRP_Ledger_Txns testnetTransaction = new XRP_Ledger_Txns();
 			result = testnetTransaction.sendTestnetXRP();
 			
-			return result;
+			return "Succes" + result;
 			
 		}
 		catch(Exception e) {

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.xrpl.xrplcontrollers, com.xrpl.controllers, "
-		+ "com.xrpl.adminmethodscontroller, com.xrpl.publicmethodscontroller")
+		+ "com.xrpl.adminmethodscontroller, com.xrpl.publicmethodscontroller, com.xrpl.peerportcontroller")
 public class XRPLApiEngineApplication {
 
 	public static void main(String[] args) {

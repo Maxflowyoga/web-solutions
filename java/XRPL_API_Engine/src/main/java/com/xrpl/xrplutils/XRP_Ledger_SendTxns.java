@@ -38,7 +38,7 @@ import org.xrpl.xrpl4j.model.transactions.XrpCurrencyAmount;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.primitives.UnsignedInteger;
 
-public class XRP_Ledger_Txns {
+public class XRP_Ledger_SendTxns {
 	
 	
 	

@@ -9,7 +9,7 @@ import org.xrpl.xrpl4j.model.client.transactions.TransactionResult;
 import org.xrpl.xrpl4j.model.transactions.Payment;
 
 import com.xrpl.models.Model_XRP_Transaction;
-import com.xrpl.xrplutils.XRP_Ledger_Txns;
+import com.xrpl.xrplutils.XRP_Ledger_SendTxns;
 
 @RestController
 public class Controller_XRPL_SendXRP {
@@ -23,7 +23,7 @@ public class Controller_XRPL_SendXRP {
 		String result = "Unable to send XRP";
 		
 		try {
-			XRP_Ledger_Txns testnetTransaction = new XRP_Ledger_Txns();
+			XRP_Ledger_SendTxns testnetTransaction = new XRP_Ledger_SendTxns();
 			Model_XRP_Transaction modelTxn = new Model_XRP_Transaction();
 
 			TransactionResult<Payment> txnResult = testnetTransaction.sendTestnetXRP();
@@ -49,7 +49,7 @@ public class Controller_XRPL_SendXRP {
 		
 		try {
 			Model_XRP_Transaction modelTxn = new Model_XRP_Transaction();
-			XRP_Ledger_Txns testnetTransaction = new XRP_Ledger_Txns();
+			XRP_Ledger_SendTxns testnetTransaction = new XRP_Ledger_SendTxns();
 			
 			//result = testnetTransaction.sendTestnetXRP();
 			

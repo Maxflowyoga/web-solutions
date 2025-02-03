@@ -1,4 +1,4 @@
-package com.xrpl.xrplcontrollers;
+package com.xrpl.paymentcontrollers;
 
 
 

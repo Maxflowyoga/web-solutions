@@ -1,3 +1,12 @@
+-------------Begin Abstract Purose-------------------
+This API Engine encapsulates all functionality for the XRPL(edger) programmibility...
+
+You can deploy this Java 17 Spring Boot application on a AWS elasticbeanstalk server deployment or any JVM, locally etc.
+
+Also easy to translate the logic into python or node and interwine those resouces with python, AWS apache airflow, node lambda functions and any database of your choice, NoSQL or SQL.
+
+-------------End Abstract Purose-------------------
+
 Sample Testnet account generation and funding Account Data Object result:
 
 ----

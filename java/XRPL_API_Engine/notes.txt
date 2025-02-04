@@ -4,9 +4,9 @@ Feel free to connect on LinkedIN and download my complimentary 200hour power vin
 -https://www.linkedin.com/in/john-maximilian-figueroa-maxflowyoga/
 
 -------------Begin Abstract Purpose-------------------
-This API Engine encapsulates all functionality for the XRPL(edger) programmibility...
+This API Engine encapsulates all functionality for the XRPL(edger) programmability...
 
-You can deploy this Java 17 Spring Boot application on a AWS elasticbeanstalk server deployment or any JVM, locally etc.
+You can deploy this Java 17+ Spring Boot application on a AWS elasticbeanstalk server deployment or any JVM, locally etc.
 
 Also easy to translate the logic into python or node and interwine those resouces with python, AWS apache airflow, node lambda functions and any database of your choice, NoSQL or SQL.
 

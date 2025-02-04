@@ -7,6 +7,15 @@ Also easy to translate the logic into python or node and interwine those resouce
 
 -------------End Abstract Purose-------------------
 
+API Controller classes are in packages labeled with *controller in the name:
+
+Test controller with full stack API so far as I navigate the SDK are:
+1) Controller_XRPL_Home
+-create and fund a testnet account
+2) Controller_XRPL_SendXRP
+-create testnet accoutn, fund it and send XRP, receive successful confirmation response
+3...) creating and building out limitless from here
+---------------------------------------------------
 Sample Testnet account generation and funding Account Data Object result:
 
 ----

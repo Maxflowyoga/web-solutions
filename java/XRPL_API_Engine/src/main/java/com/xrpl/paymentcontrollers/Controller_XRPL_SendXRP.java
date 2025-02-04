@@ -42,31 +42,5 @@ public class Controller_XRPL_SendXRP {
 		
 	}
 	
-	@GetMapping("/sendTestnetXRPJSON")
-	public String sendXRPJSON() {
-		
-		String result = "Unable to send XRP";
-		
-		try {
-			Model_XRP_Transaction modelTxn = new Model_XRP_Transaction();
-			XRP_Ledger_SendTxns testnetTransaction = new XRP_Ledger_SendTxns();
-			
-			//result = testnetTransaction.sendTestnetXRP();
-			
-			result = modelTxn.exportJSON(result);
-			// object map the successful result into proper JSON
-			return "Succes" + result;
-			
-		}
-		catch(Exception e) {
-			
-			System.out.println("System error on XRP Send API: " + e);	
-		}
-		
-		return result;
-		
-	}
-	
-	
 	
 }

@@ -302,7 +302,13 @@ LastLedgerSequence has passed. Last tx response: TransactionResult{status=succes
 TransactionResult{status=success, transaction=Payment{account=rJDTsqdxvCwc2fDs2HuMSx38LvNzEoRThG, fee=10, sequence=4505373, lastLedgerSequence=4505375, memos=[], signers=[], signingPublicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)}, base58Value=aKNuHQ8x1wfxLYQSGNMZvE45n7ewtvQ5Ues52mk6fyCGqfY2qEfS, base16Value=ED11CF8E8314D9216CE3EA7869EA01910C7EEA90D5A2BBB2C890823F9DA48081FB, keyType=ED25519}, transactionSignature=Signature{value=UnsignedByteArray{unsignedBytes=List(size=64)}}, flags=0, amount=1000000, destination=rJDTsqdxvCwc2fDs2HuMSx38LvNzEoRThG, paths=[]}, hash=4A2FFB9B019BB00E59582ED80032BD8553AE0FA08BF1D6C672A74CC6FF970E84, validated=false}
 Explorer link is: https://testnet.xrpl.org/transactions/SingleSignedTransaction{unsignedTransaction=Payment{account=rJDTsqdxvCwc2fDs2HuMSx38LvNzEoRThG, fee=10, sequence=4505373, lastLedgerSequence=4505375, memos=[], signers=[], signingPublicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)}, base58Value=aKNuHQ8x1wfxLYQSGNMZvE45n7ewtvQ5Ues52mk6fyCGqfY2qEfS, base16Value=ED11CF8E8314D9216CE3EA7869EA01910C7EEA90D5A2BBB2C890823F9DA48081FB, keyType=ED25519}, flags=0, amount=1000000, destination=rJDTsqdxvCwc2fDs2HuMSx38LvNzEoRThG, paths=[]}, signedTransaction=Payment{account=rJDTsqdxvCwc2fDs2HuMSx38LvNzEoRThG, fee=10, sequence=4505373, lastLedgerSequence=4505375, memos=[], signers=[], signingPublicKey=PublicKey{value=UnsignedByteArray{unsignedBytes=List(size=33)}, base58Value=aKNuHQ8x1wfxLYQSGNMZvE45n7ewtvQ5Ues52mk6fyCGqfY2qEfS, base16Value=ED11CF8E8314D9216CE3EA7869EA01910C7EEA90D5A2BBB2C890823F9DA48081FB, keyType=ED25519}, transactionSignature=Signature{value=UnsignedByteArray{unsignedBytes=List(size=64)}}, flags=0, amount=1000000, destination=rJDTsqdxvCwc2fDs2HuMSx38LvNzEoRThG, paths=[]}, signedTransactionBytes=UnsignedByteArray{unsignedBytes=List(size=177)}, hash=4A2FFB9B019BB00E59582ED80032BD8553AE0FA08BF1D6C672A74CC6FF970E84, signature=Signature{value=UnsignedByteArray{unsignedBytes=List(size=64)}}}
 
+---------
 
+Get /xrp
+
+test account funded:
+
+AccountInfoResult{status=success, accountData=AccountRootObject{ledgerEntryType=ACCOUNT_ROOT, account=rp9o7unyGGicujFNsC4iBvh46eut8QPVCU, balance=100000000, flags=0, ownerCount=0, previousTransactionId=0000000000000000000000000000000000000000000000000000000000000000, previousTransactionLedgerSequence=0, sequence=4540882, signerLists=[], index=C5DDE92F01FA6B45800415B43A92210EF1C143ABF402A45FBADC6B4828E96F57}, ledgerCurrentIndex=4540882, validated=false}
 
 
 -----------END---------

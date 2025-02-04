@@ -1,4 +1,9 @@
--------------Begin Abstract Purose-------------------
+Feel free to connect on LinkedIN and download my complimentary 200hour power vinyasa yoga teacher training to empower humanity!
+
+-https://linktr.ee/maxflowyoga
+-https://www.linkedin.com/in/john-maximilian-figueroa-maxflowyoga/
+
+-------------Begin Abstract Purpose-------------------
 This API Engine encapsulates all functionality for the XRPL(edger) programmibility...
 
 You can deploy this Java 17 Spring Boot application on a AWS elasticbeanstalk server deployment or any JVM, locally etc.

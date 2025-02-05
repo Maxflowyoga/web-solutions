@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.xrpl.xrpl4j.model.transactions.EscrowCreate;
 
+import com.xrpl.models.Model_XRP_Transaction;
+import com.xrpl.xrplutils.XRP_Ledger_Escrows;
 import com.xrpl.xrplutils.XRP_Ledger_SendTxns;
 
 
@@ -38,6 +41,35 @@ public class Controller_XRPL_Escrows {
 		return result;
 		
 		
+	}
+	
+	
+	@GetMapping("/create-escrow")
+	public String createEscrow(String accountAddress, int currencyDropsAmount,
+			int feeDropsAmount, String destinationAddress,
+			int destinationTag, int cancelAfter, int finishAfter, String conditionDecodeString,
+			int sourceTag) {
+		
+		String result = "No resuls for escrow build API";
+		
+		try { 
+			XRP_Ledger_Escrows xrpEscrow = new XRP_Ledger_Escrows();
+			EscrowCreate escrowCreate = null;
+			
+			escrowCreate = xrpEscrow.buildEscrow(accountAddress, currencyDropsAmount, feeDropsAmount, 
+					destinationAddress, destinationTag, cancelAfter, 
+					finishAfter, conditionDecodeString, sourceTag);
+			
+
+			Model_XRP_Transaction modelTxn = new Model_XRP_Transaction();
+			result = modelTxn.exportJSON(escrowCreate);
+			
+			
+		} catch (Exception e) {
+			System.out.println("Error in Escrow Creation API...");
+		}
+		
+		return result;
 	}
 	
 	

@@ -12,26 +12,29 @@ import com.ripple.cryptoconditions.CryptoConditionReader;
 public class XRP_Ledger_Escrows {
 	
 	
-	public EscrowCreate buildEscrow() {
+	public EscrowCreate buildEscrow(String accountAddress, int currencyDropsAmount, String destinationAddress,
+			int destinationTag, int cancelAfter, int finishAfter, String conditionDecodeString,
+			int sourceTag) 
+	{
 		
 		EscrowCreate escrowCreate = null;
 		
 		try {
 			
 			escrowCreate = EscrowCreate.builder() 
-					.account(Address.of("publicKey"))
-					.fee(XrpCurrencyAmount.ofDrops(12))
+					.account(Address.of(accountAddress))
+					.fee(XrpCurrencyAmount.ofDrops(currencyDropsAmount)) // 12
 					.sequence(null)
 					.amount(null)
-					.destination(Address.of("publicKey_Destination"))
-					.destinationTag(UnsignedInteger.valueOf(23480))
-					.cancelAfter(UnsignedLong.valueOf(533257958))
-					.finishAfter(UnsignedLong.valueOf(533171558))
+					.destination(Address.of(destinationAddress))
+					.destinationTag(UnsignedInteger.valueOf(destinationTag))// 23480
+					.cancelAfter(UnsignedLong.valueOf(cancelAfter)) //533257958
+					.finishAfter(UnsignedLong.valueOf(finishAfter)) // 533171558
 					.condition(CryptoConditionReader.readCondition(
 							BaseEncoding.base16()
-								.decode(""))
+								.decode(conditionDecodeString))
 							)
-							.sourceTag(UnsignedInteger.valueOf(11747))	
+							.sourceTag(UnsignedInteger.valueOf(sourceTag))	 // 11747
 							.build();
 			
 			return escrowCreate;

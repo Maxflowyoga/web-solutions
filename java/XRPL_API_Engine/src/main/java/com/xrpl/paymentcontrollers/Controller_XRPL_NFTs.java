@@ -39,5 +39,10 @@ Request Format for the Get Account NFTS:
 			}]
 }
 
+-additional Parameters are:
++ ledger_hash
++ limit 
++ marker
+
 
 */

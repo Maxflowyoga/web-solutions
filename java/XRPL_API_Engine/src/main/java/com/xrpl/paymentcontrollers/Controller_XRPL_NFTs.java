@@ -8,18 +8,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xrpl.xrplutils.XRP_Ledger_AccountData;
+
 
 public class Controller_XRPL_NFTs {
 	
 	
 	
 	@PostMapping("/nfts")
-	public void getAccountNFTs() {
+	public String getAccountNFTs(String account, String ledgerIndex, String limit, 
+			String marker, String ledger_hash) {
+		
+		XRP_Ledger_AccountData xrpAccountData = new XRP_Ledger_AccountData();
+		
+		String result = "";
+		
+		try {
+			
+			result = xrpAccountData.getAllAccountNFTS(account, ledgerIndex, limit, marker, ledger_hash);
+			
+			System.out.println("NFT APIes is: " + result);
+			
+		} catch (Exception e) {
+			
+			System.out.println("System error in get NFTs API: " + e);
+		}
 		
 		
-		
-		
-		
+		return result;
 	}
 
 }

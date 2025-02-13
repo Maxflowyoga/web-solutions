@@ -1,4 +1,4 @@
-package com.xrpl.paymentcontrollers;
+package com.xrpl.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
 

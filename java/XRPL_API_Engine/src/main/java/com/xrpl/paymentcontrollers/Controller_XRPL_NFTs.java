@@ -2,6 +2,7 @@ package com.xrpl.paymentcontrollers;
 
 
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +15,7 @@ import com.xrpl.xrplutils.XRP_Ledger_AccountData;
 public class Controller_XRPL_NFTs {
 	
 	
-	
+	@CrossOrigin(origins = "http://localhost:8080/")
 	@PostMapping("/nfts")
 	public String getAccountNFTs(String account, String ledgerIndex, String limit, 
 			String marker, String ledger_hash) {

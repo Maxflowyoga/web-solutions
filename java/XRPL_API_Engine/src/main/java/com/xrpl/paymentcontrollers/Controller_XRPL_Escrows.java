@@ -2,6 +2,7 @@ package com.xrpl.paymentcontrollers;
 
 
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +20,7 @@ import com.xrpl.xrplutils.XRP_Ledger_SendTxns;
 public class Controller_XRPL_Escrows {
 	
 	
-	
+	@CrossOrigin(origins = "http://localhost:8080/")
 	@GetMapping("/escrows")
 	public String getEscrows() {
 		
@@ -43,7 +44,7 @@ public class Controller_XRPL_Escrows {
 		
 	}
 	
-	
+	@CrossOrigin(origins = "http://localhost:8080/")
 	@GetMapping("/create-escrow")
 	public String createEscrow(String accountAddress, int currencyDropsAmount,
 			int feeDropsAmount, String destinationAddress,

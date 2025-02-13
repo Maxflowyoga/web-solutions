@@ -1,6 +1,7 @@
 package com.xrpl.paymentcontrollers;
 
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,7 +17,7 @@ public class Controller_XRPL_SendXRP {
 
 	
 	
-	
+	@CrossOrigin(origins = "http://localhost:8080/")
 	@GetMapping("/sendTestnetXRP")
 	public String sendXRP() {
 		

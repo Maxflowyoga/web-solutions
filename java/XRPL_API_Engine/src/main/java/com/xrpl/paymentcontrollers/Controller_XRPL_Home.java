@@ -2,6 +2,7 @@ package com.xrpl.paymentcontrollers;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +24,7 @@ public class Controller_XRPL_Home {
 	private final AtomicLong counter = new AtomicLong();
 
 	
+	@CrossOrigin(origins = "http://localhost:8080/")
 	@GetMapping("/xrp-greeting")
 	@ResponseBody
 	public Model_Greeting greeting(@RequestParam(defaultValue = "XRP Yoga") String name) {
@@ -38,6 +40,7 @@ public class Controller_XRPL_Home {
 	}
 	
 	
+	@CrossOrigin(origins = "http://localhost:8080/")
 	@GetMapping("/xrp")
 	public String xrpHome() {
 
@@ -66,6 +69,7 @@ public class Controller_XRPL_Home {
 		return resultSet;
 	}
 	
+	@CrossOrigin(origins = "http://localhost:8080/")
 	@GetMapping("/")
 	public String home() {
 		

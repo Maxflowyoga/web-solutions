@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBandWtasks", "MBandWtasks\MBandWtasks.csproj", "{1DC392D8-EC20-4C30-8407-4F58A4B8377E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBandWtasksTest", "MBandWtasksTest\MBandWtasksTest.csproj", "{DC735967-B26B-41CF-947B-C281BB62722A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DC392D8-EC20-4C30-8407-4F58A4B8377E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC392D8-EC20-4C30-8407-4F58A4B8377E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC392D8-EC20-4C30-8407-4F58A4B8377E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC392D8-EC20-4C30-8407-4F58A4B8377E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC735967-B26B-41CF-947B-C281BB62722A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC735967-B26B-41CF-947B-C281BB62722A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC735967-B26B-41CF-947B-C281BB62722A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC735967-B26B-41CF-947B-C281BB62722A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B49246C8-93C0-47F1-8FAA-6375E00F436D}
+	EndGlobalSection
+EndGlobal

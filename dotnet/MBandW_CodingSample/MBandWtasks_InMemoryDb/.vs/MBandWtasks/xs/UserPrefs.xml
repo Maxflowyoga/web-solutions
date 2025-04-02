@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{1DC392D8-EC20-4C30-8407-4F58A4B8377E}|Default">
+  <MonoDevelop.Ide.ItemProperties.MBandWtasks PreferredExecutionTarget="/Applications/Brave Browser.app" />
+  <MonoDevelop.Ide.ItemProperties.MBandWtasksTest FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MBandWtasks/Controllers/MBandWtasksController.cs">
+    <Files>
+      <File FileName="MBandWtasks/Program.cs" Line="12" Column="1" IsPinned="True" />
+      <File FileName="MBandWtasks/Controllers/MBandWtasksController.cs" Line="126" Column="59" IsPinned="True" />
+      <File FileName="MBandWtasks/Models/MBandWtask.cs" Line="18" Column="24" NotebookId="1" IsPinned="True" />
+      <File FileName="MBandWtasks/README.md" Line="32" Column="15" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MBandWtasks" expanded="True">
+            <Node name="MBandWtasks">
+              <Node name="Controllers" expanded="True">
+                <Node name="MBandWtasksController.cs" selected="True" />
+              </Node>
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+            <Node name="MBandWtasksTest" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

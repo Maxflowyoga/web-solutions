@@ -1,0 +1,178 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasksTest/MBandWtasksTest.csproj": {}
+  },
+  "projects": {
+    "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasks/MBandWtasks.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasks/MBandWtasks.csproj",
+        "projectName": "MBandWtasks",
+        "projectPath": "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasks/MBandWtasks.csproj",
+        "packagesPath": "/Users/maximilian/.nuget/packages/",
+        "outputPath": "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasks/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/maximilian/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/sdk/7.0.317/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.317/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasksTest/MBandWtasksTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasksTest/MBandWtasksTest.csproj",
+        "projectName": "MBandWtasksTest",
+        "projectPath": "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasksTest/MBandWtasksTest.csproj",
+        "packagesPath": "/Users/maximilian/.nuget/packages/",
+        "outputPath": "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasksTest/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/maximilian/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasks/MBandWtasks.csproj": {
+                "projectPath": "/Users/maximilian/Projects/GitHub/Yogis/McCarthyBurgessWolffinc/MBandWtasks/MBandWtasks/MBandWtasks.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.317/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
